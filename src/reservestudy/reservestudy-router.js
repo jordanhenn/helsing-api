@@ -29,7 +29,7 @@ ReserveStudyRouter
       .then(study => {
         res
           .status(201)
-          .location(path.posix.join(req.originalUrl, `/${study.id}`))
+          .location(path.posix.join(req.originalUrl, `/${study.rs_id}`))
           .json(study)
       })
       .catch(next)
@@ -44,7 +44,7 @@ ReserveStudyRouter
   .delete((req, res, next) => {
       ReserveStudyService.deleteReserveStudy(
           req.app.get('db'),
-          res.study.id
+          res.study.rs_id
       )
       .then(
           res.status(204)
@@ -56,13 +56,13 @@ ReserveStudyRouter
     const updatedInfo = { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue, additional_notes }
     ReserveStudyService.updateReserveStudy(
         req.app.get('db'),
-        res.study.id,
+        res.study.rs_id,
         updatedInfo
       )
       .then(study => {
         res
           .status(204)
-          .location(path.posix.join(req.originalUrl, `/${study.id}`))
+          .location(path.posix.join(req.originalUrl, `/${study.rs_id}`))
           .json(study)
       })
       .catch(next)

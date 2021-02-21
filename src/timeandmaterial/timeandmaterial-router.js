@@ -30,7 +30,7 @@ TimeAndMaterialRouter
       .then(study => {
         res
           .status(201)
-          .location(path.posix.join(req.originalUrl, `/${study.id}`))
+          .location(path.posix.join(req.originalUrl, `/${study.tm_id}`))
           .json(study)
       })
       .catch(next)
@@ -45,7 +45,7 @@ TimeAndMaterialRouter
   .delete((req, res, next) => {
       TimeAndMaterialService.deleteTimeAndMaterial(
           req.app.get('db'),
-          res.study.id
+          res.study.tm_id
       )
       .then(
           res.status(204)
@@ -57,13 +57,13 @@ TimeAndMaterialRouter
     const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes }
     TimeAndMaterialService.updateTimeAndMaterial(
         req.app.get('db'),
-        res.study.id,
+        res.study.tm_id,
         updatedInfo
       )
       .then(study => {
         res
           .status(204)
-          .location(path.posix.join(req.originalUrl, `/${study.id}`))
+          .location(path.posix.join(req.originalUrl, `/${study.tm_id}`))
           .json(study)
       })
       .catch(next)

@@ -30,7 +30,7 @@ SustainmentRouter
       .then(study => {
         res
           .status(201)
-          .location(path.posix.join(req.originalUrl, `/${study.id}`))
+          .location(path.posix.join(req.originalUrl, `/${study.s_id}`))
           .json(study)
       })
       .catch(next)
@@ -45,7 +45,7 @@ SustainmentRouter
   .delete((req, res, next) => {
       SustainmentService.deleteSustainment(
           req.app.get('db'),
-          res.study.id
+          res.study.s_id
       )
       .then(
           res.status(204)
@@ -57,13 +57,13 @@ SustainmentRouter
     const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes }
     SustainmentService.updateSustainment(
         req.app.get('db'),
-        res.study.id,
+        res.study.s_id,
         updatedInfo
       )
       .then(study => {
         res
           .status(204)
-          .location(path.posix.join(req.originalUrl, `/${study.id}`))
+          .location(path.posix.join(req.originalUrl, `/${study.s_id}`))
           .json(study)
       })
       .catch(next)
