@@ -75,6 +75,6 @@ CREATE TABLE helsing_timeandmaterial (
     tm_contract BOOLEAN,
     worksheets BOOLEAN,
     billed BOOLEAN,
-    billed_date TIMESTAMP
+    billed_date TIMESTAMP,
     additional_notes TEXT
 );
