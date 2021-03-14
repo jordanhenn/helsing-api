@@ -10,12 +10,6 @@ const EmployeeRouter = require('./employee/employee-router')
 
 const app = express()
 app.use(cors())
-app.options('/login', function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader('Access-Control-Allow-Methods', '*');
-    res.setHeader("Access-Control-Allow-Headers", "*");
-    res.end();
-  });
 
 app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
   skip: () => NODE_ENV === 'test',
@@ -24,9 +18,33 @@ app.use(helmet())
 
 app.use(express.json());
 app.use('/api/reservestudy', ReserveStudyRouter)
+app.options('/api/reservestudy', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.end();
+  });
 app.use('/api/sustainment', SustainmentRouter)
+app.options('/api/sustainment', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.end();
+  });
 app.use('/api/timeandmaterial', TimeAndMaterialRouter)
+app.options('/api/timeandmaterial', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.end();
+  });
 app.use('/api/employee', EmployeeRouter)
+app.options('/api/employee', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.end();
+  });
 
 app.use(function errorHandler(error, req, res, next) {
     let response
