@@ -1,5 +1,5 @@
 const express = require('express')
-const EmployeeService = require('./Employee-service')
+const EmployeeService = require('./employee-service')
 const jsonBodyParser = express.json()
 
 const EmployeeRouter = express.Router()

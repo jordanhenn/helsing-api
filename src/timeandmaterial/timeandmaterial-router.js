@@ -1,5 +1,5 @@
 const express = require('express')
-const TimeAndMaterialService = require('./TimeAndMaterial-service')
+const TimeAndMaterialService = require('./timeandmaterial-service')
 const jsonBodyParser = express.json()
 
 const TimeAndMaterialRouter = express.Router()
