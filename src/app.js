@@ -14,10 +14,6 @@ app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
   skip: () => NODE_ENV === 'test',
 }))
 app.use(cors())
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    next();
-  })
 app.use(helmet())
 
 app.use(express.json());
