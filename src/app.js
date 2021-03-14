@@ -10,6 +10,7 @@ const EmployeeRouter = require('./employee/employee-router')
 
 const app = express()
 app.use(cors())
+app.options('*', cors())
 
 app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
   skip: () => NODE_ENV === 'test',
