@@ -55,12 +55,12 @@ EmployeeRouter
 
 async function checkEmployeeExists(req, res, next) {
   try {
-    const study = await EmployeeService.getEmployeeById(
+    const employee = await EmployeeService.getEmployeeById(
       req.app.get('db'),
       req.params.e_id
     )
 
-    if (!study)
+    if (!employee)
       return res.status(404).json({
         error: `Employee doesn't exist`
     })
