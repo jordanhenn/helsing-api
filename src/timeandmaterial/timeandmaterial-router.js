@@ -53,8 +53,11 @@ TimeAndMaterialRouter
       .catch(next)
   })
   .put((req, res, next) => {
-    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes } = req.body
-    const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes }
+    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes, billed } = req.body
+    const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, worksheets, additional_notes, billed }
+    if(res.study.billed === false && updatedInfo.billed === true) {
+      updatedInfo.billed_date = new Date()
+    }
     TimeAndMaterialService.updateTimeAndMaterial(
         req.app.get('db'),
         res.study.tm_id,
