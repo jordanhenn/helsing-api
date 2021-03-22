@@ -44,7 +44,7 @@ EmployeeRouter
   .delete((req, res, next) => {
       EmployeeService.deleteEmployee(
           req.app.get('db'),
-          res.study.e_id
+          res.employee.e_id
       )
       .then(
           res.status(204)
