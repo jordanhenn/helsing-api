@@ -54,11 +54,17 @@ ReserveStudyRouter
   .put((req, res, next) => {
     const { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue, additional_notes } = req.body
     const updatedInfo = { association, manager_firstname, manager_email, assigned_to, fy_end, client_number, total_price, csa, scope, retainer, ccrs, hoa_questionnaire, budget, site_plan, reserve_study, annual_review, income_statement, balance_sheet, draft_billed, final_billed, date_in_queue, additional_notes }
-    if(res.study.draft_billed === false && updatedInfo.draft_billed === true) {
+    if(res.study.draft_billed === false && updatedInfo.draft_billed === true || res.study.draft_billed === null && updatedInfo.draft_billed === true) {
       updatedInfo.draft_billed_date = new Date()
     }
-    if(res.study.final_billed === false && updatedInfo.final_billed === true) {
+    if(res.study.draft_billed === true && updatedInfo.draft_billed === false) {
+      updatedInfo.draft_billed_date = null
+    }
+    if(res.study.final_billed === false && updatedInfo.final_billed === true || res.study.draft_billed === null && updatedInfo.draft_billed === true) {
       updatedInfo.final_billed_date = new Date()
+    }
+    if(res.study.final_billed === true && updatedInfo.final_billed === false) {
+      updatedInfo.final_billed_date = null
     }
     ReserveStudyService.updateReserveStudy(
         req.app.get('db'),
