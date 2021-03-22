@@ -60,6 +60,7 @@ ReserveStudyRouter
     if(res.study.draft_billed === null && updatedInfo.draft_billed === true) {
       updatedInfo.draft_billed_date = new Date()
     }
+    console.log(res.study.draft_billed, updatedInfo.draft_billed, updatedInfo.draft_billed_date)
     if(res.study.draft_billed === true && updatedInfo.draft_billed === false) {
       updatedInfo.draft_billed_date = null
     }
