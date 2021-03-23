@@ -17,7 +17,7 @@ const TimeAndMaterialService = {
         .returning('*')
         .then(([study]) => study)
         .then(study =>
-          TimeAndMaterialService.getById(db, study.tm_id)
+          TimeAndMaterialService.getTimeAndMaterialById(db, study.tm_id)
         )
     },
     updateTimeAndMaterial(db, id, updatedStudy) {

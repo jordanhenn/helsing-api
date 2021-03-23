@@ -30,7 +30,6 @@ TimeAndMaterialRouter
       .then(study => {
         res
           .status(201)
-          .location(path.posix.join(req.originalUrl, `/${study.tm_id}`))
           .json(study)
       })
       .catch(next)
@@ -69,7 +68,6 @@ TimeAndMaterialRouter
       .then(study => {
         res
           .status(204)
-          .location(path.posix.join(req.originalUrl, `/${study.tm_id}`))
           .json(study)
       })
       .catch(next)

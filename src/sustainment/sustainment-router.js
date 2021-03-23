@@ -30,7 +30,6 @@ SustainmentRouter
       .then(study => {
         res
           .status(201)
-          .location(path.posix.join(req.originalUrl, `/${study.s_id}`))
           .json(study)
       })
       .catch(next)
@@ -81,7 +80,6 @@ SustainmentRouter
       .then(study => {
         res
           .status(204)
-          .location(path.posix.join(req.originalUrl, `/${study.s_id}`))
           .json(study)
       })
       .catch(next)

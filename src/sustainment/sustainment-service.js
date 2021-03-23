@@ -17,7 +17,7 @@ const SustainmentService = {
         .returning('*')
         .then(([study]) => study)
         .then(study =>
-          SustainmentService.getById(db, study.s_id)
+          SustainmentService.getSustainmentById(db, study.s_id)
         )
     },
     updateSustainment(db, id, updatedStudy) {

@@ -17,7 +17,7 @@ const ReserveStudyService = {
         .returning('*')
         .then(([study]) => study)
         .then(study =>
-          ReserveStudyService.getById(db, study.rs_id)
+          ReserveStudyService.getReserveStudyById(db, study.rs_id)
         )
     },
     updateReserveStudy(db, id, updatedStudy) {
