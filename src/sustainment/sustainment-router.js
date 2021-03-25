@@ -14,8 +14,8 @@ SustainmentRouter
       .catch(next)
 })
   .post(jsonBodyParser, (req, res, next) => {
-    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, additional_notes } = req.body
-    const newStudy = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, additional_notes }
+    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, additional_notes } = req.body
+    const newStudy = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, additional_notes }
     newStudy.date_added = new Date()
 
       if (association == null)
@@ -52,24 +52,24 @@ SustainmentRouter
       .catch(next)
   })
   .put((req, res, next) => {
-    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes } = req.body
-    const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes }
-    if(res.study.yr1_billed === false && updatedInfo.yr1_billed === true || res.study.yr1_billed === null && updatedInfo.yr1_billed === true) {
+    const { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes } = req.body
+    const updatedInfo = { association, manager_firstname, manager_email, fy_end, client_number, assigned_to, total_price, s_contract, retainer, worksheets_yr1, worksheets_yr2, worksheets_yr3, yr1_billed, yr2_billed, yr3_billed, sustainment_letter, additional_notes }
+    if(res.study.yr1_billed === false && updatedInfo.yr1_billed == 'true' || res.study.yr1_billed === null && updatedInfo.yr1_billed == 'true') {
       updatedInfo.yr1_billed_date = new Date()
     }
-    if(res.study.yr1_billed === true && updatedInfo.yr1_billed === false) {
+    if(res.study.yr1_billed === true && updatedInfo.yr1_billed == 'false') {
       updatedInfo.yr1_billed_date = null
     }
-    if(res.study.yr2_billed === false && updatedInfo.yr2_billed === true || res.study.yr2_billed === null && updatedInfo.yr2_billed === true) {
+    if(res.study.yr2_billed === false && updatedInfo.yr2_billed == 'true' || res.study.yr2_billed === null && updatedInfo.yr2_billed == 'true') {
       updatedInfo.yr2_billed_date = new Date()
     }
-    if(res.study.yr2_billed === true && updatedInfo.yr2_billed === false) {
+    if(res.study.yr2_billed === true && updatedInfo.yr2_billed == 'false') {
       updatedInfo.yr2_billed_date = null
     }
-    if(res.study.yr3_billed === false && updatedInfo.yr3_billed === true || res.study.yr3_billed === null && updatedInfo.yr3_billed === true) {
+    if(res.study.yr3_billed === false && updatedInfo.yr3_billed == 'true' || res.study.yr3_billed === null && updatedInfo.yr3_billed == 'true') {
       updatedInfo.yr3_billed_date = new Date()
     }
-    if(res.study.yr3_billed === true && updatedInfo.yr3_billed === false) {
+    if(res.study.yr3_billed === true && updatedInfo.yr3_billed == 'false') {
       updatedInfo.yr3_billed_date = null
     }
     SustainmentService.updateSustainment(
