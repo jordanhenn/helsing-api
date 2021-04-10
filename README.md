@@ -1,26 +1,73 @@
-# Express Boilerplate!
+# Drivia API
+https://hidden-woodland-57923.herokuapp.com/api
 
-This is a boilerplate project used for starting new projects!
+# Drivia Client
+https://helsing-client.vercel.app
 
-## Set up
+# Client REPO
+https://github.com/jordanhenn/helsing-client
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+## Endpoints
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+### GET /reservestudy
+Returns all reserve studies.
 
-## Scripts
+### GET /sustainment
+Returns all sustainment studies.
 
-Start the application `npm start`
+### GET /timeandmaterial
+Returns all time and material studies.
 
-Start nodemon for the application `npm run dev`
+### GET /employee
+Returns a current list of employees.
 
-Run the tests `npm test`
+### POST /reservestudy
+Posts a new reserve project to the database.
 
-## Deploying
+### POST /sustainment
+Posts a new sustainment project to the database.
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+### POST /timeandmaterial
+Posts a new time and material project to the database.
+
+### POST /employee
+Posts a new employee to the database.
+
+### PUT /reservestudy/:rs-id
+Updates a specific reserve project in the database.
+
+### PUT /sustainment/:s-id
+Updates a specific sustainment project in the database.
+
+### PUT /timeandmaterial/:tm-id
+Updates a specific time and material project in the database.
+
+### GET /reservestudy/:rs-id
+Retrieves reserve project by id.
+
+### GET /sustainment/:s-id
+Retrieves sustainment project by id.
+
+### GET /timeandmaterial/:tm-id
+Retrieves time and material project by id.
+
+### GET /employee/:e-id
+Retrieves employee by id. 
+
+### DELETE /reservestudy/:rs-id
+Deletes reserve study project by id.
+
+### DELETE /sustainment/:s-id
+Deletes sustainment project by id.
+
+### DELETE /timeandmaterial/:tm-id
+Deletes time and material project by id.
+
+### DELETE /employee/:e-id
+Deletes employee by id. 
+
+### Tech Used
+Express, PostgreSQL, Javascript, Node
+
+## Summary
+The HG Job Tracker was developed for an HOA management company in order to better track progress and billings on reserve study project. It also assists in automating certain aspects of the manager/employee/client relationship cycle. 
