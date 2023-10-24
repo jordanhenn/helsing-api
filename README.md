@@ -1,7 +1,7 @@
-# Drivia API
+# Helsing API
 https://hidden-woodland-57923.herokuapp.com/api
 
-# Drivia Client
+# Helsing Client
 https://helsing-client.vercel.app
 
 # Client REPO
